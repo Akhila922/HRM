@@ -1,47 +1,46 @@
 package com.cg.hrms.entity;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "regions")
-public class Regions {
+public class Region {
 
     @Id
-    @Column(name = "region_id", nullable = false)
-    private Long regionId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "region_id")
+    private Long id;
 
-    @Column(name = "region_name", length = 25)
-    private String regionName;
+    @Column(name = "region_name", nullable = false)
+    private String name;
 
-    public Regions() {}
-
-    public Regions(Long regionId, String regionName) {
-        this.regionId = regionId;
-        this.regionName = regionName;
-    }
+    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
+    private List<Country> countries;
 
     // Getters and Setters
-    public Long getRegionId() {
-        return regionId;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setRegionId(Long regionId) {
-        this.regionId = regionId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getRegionName() {
-        return regionName;
+    public String getName() {
+        return name;
     }
 
-    public void setRegionName(String regionName) {
-        this.regionName = regionName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Regions{" +
-                "regionId=" + regionId +
-                ", regionName='" + regionName + '\'' +
-                '}';
+    public List<Country> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(List<Country> countries) {
+        this.countries = countries;
     }
 }
