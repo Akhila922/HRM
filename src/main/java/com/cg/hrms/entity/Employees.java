@@ -1,80 +1,106 @@
-package com.cg.hrms.entity;
+package com.cg.springtest.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "employees")
 public class Employees {
-
     @Id
     @Column(name = "employee_id")
-    private Long id;
+    private Long employeeId;
 
     @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email")
     private String email;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "hire_date", nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date hireDate;
-
-    @Column(name = "job_id", nullable = false)
-    private String jobId;
+    @Column(name = "hire_date")
+    private LocalDate hireDate;
 
     @Column(name = "salary")
-    private Double salary;
-
-    @Column(name = "commission_pct")
-    private Double commissionPct;
-
-    @Column(name = "manager_id")
-    private Long managerId;
+    private BigDecimal salary;
 
     @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "department_id")
-    private Departments department;
+    @JsonIgnore
+    @JoinColumn(name = "job_id")
+    private Jobs job;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+	public Long getEmployeeId() {
+		return employeeId;
+	}
 
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
+	public void setEmployeeId(Long employeeId) {
+		this.employeeId = employeeId;
+	}
 
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public String getPhoneNumber() { return phoneNumber; }
-    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public Date getHireDate() { return hireDate; }
-    public void setHireDate(Date hireDate) { this.hireDate = hireDate; }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public String getJobId() { return jobId; }
-    public void setJobId(String jobId) { this.jobId = jobId; }
+	public String getEmail() {
+		return email;
+	}
 
-    public Double getSalary() { return salary; }
-    public void setSalary(Double salary) { this.salary = salary; }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public Double getCommissionPct() { return commissionPct; }
-    public void setCommissionPct(Double commissionPct) { this.commissionPct = commissionPct; }
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
 
-    public Long getManagerId() { return managerId; }
-    public void setManagerId(Long managerId) { this.managerId = managerId; }
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
-    public Departments getDepartment() { return department; }
-    public void setDepartment(Departments department) { this.department = department; }
+	public LocalDate getHireDate() {
+		return hireDate;
+	}
+
+	public void setHireDate(LocalDate hireDate) {
+		this.hireDate = hireDate;
+	}
+
+	public BigDecimal getSalary() {
+		return salary;
+	}
+
+	public void setSalary(BigDecimal salary) {
+		this.salary = salary;
+	}
+
+	public Jobs getJob() {
+		return job;
+	}
+
+	public void setJob(Jobs job) {
+		this.job = job;
+	}
+
+    // Getters and Setters
+    
 }

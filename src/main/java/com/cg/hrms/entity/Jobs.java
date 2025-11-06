@@ -1,65 +1,70 @@
-package com.cg.hrms.entity;
+package com.cg.springtest.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "jobs")
 public class Jobs {
+	@Id
+	@Column(name = "job_id")
+	private String jobId;
 
-    @Id
-    @Column(name = "job_id", nullable = false, length = 10)
-    private String jobId;
+	@Column(name = "job_title")
+	private String jobTitle;
 
-    @Column(name = "job_title", nullable = false, length = 35)
-    private String jobTitle;
+	@Column(name = "min_salary")
+	private BigDecimal minSalary;
 
-    @Column(name = "min_salary", precision = 6, scale = 0)
-    private Integer minSalary;
+	@Column(name = "max_salary")
+	private BigDecimal maxSalary;
 
-    @Column(name = "max_salary", precision = 6, scale = 0)
-    private Integer maxSalary;
+	@OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Employees> employees;
 
-    // Default constructor
-    public Jobs() {}
+	public String getJobId() {
+		return jobId;
+	}
 
-    // Parameterized constructor
-    public Jobs(String jobId, String jobTitle, Integer minSalary, Integer maxSalary) {
-        this.jobId = jobId;
-        this.jobTitle = jobTitle;
-        this.minSalary = minSalary;
-        this.maxSalary = maxSalary;
-    }
+	public void setJobId(String jobId) {
+		this.jobId = jobId;
+	}
 
-    // Getters and Setters
-    public String getJobId() {
-        return jobId;
-    }
+	public String getJobTitle() {
+		return jobTitle;
+	}
 
-    public void setJobId(String jobId) {
-        this.jobId = jobId;
-    }
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
 
-    public String getJobTitle() {
-        return jobTitle;
-    }
+	public BigDecimal getMinSalary() {
+		return minSalary;
+	}
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
+	public void setMinSalary(BigDecimal minSalary) {
+		this.minSalary = minSalary;
+	}
 
-    public Integer getMinSalary() {
-        return minSalary;
-    }
+	public BigDecimal getMaxSalary() {
+		return maxSalary;
+	}
 
-    public void setMinSalary(Integer minSalary) {
-        this.minSalary = minSalary;
-    }
+	public void setMaxSalary(BigDecimal maxSalary) {
+		this.maxSalary = maxSalary;
+	}
 
-    public Integer getMaxSalary() {
-        return maxSalary;
-    }
+	public List<Employees> getEmployees() {
+		return employees;
+	}
 
-    public void setMaxSalary(Integer maxSalary) {
-        this.maxSalary = maxSalary;
-    }
+	public void setEmployees(List<Employees> employees) {
+		this.employees = employees;
+	}
+
+	// Getters and Setters
 }
