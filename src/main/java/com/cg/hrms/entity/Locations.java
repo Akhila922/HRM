@@ -2,11 +2,11 @@ package com.cg.hrms.entity;
 
 import jakarta.persistence.*;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "locations")
-public class Locations {
+public class Location {
 
     @Id
     @Column(name = "location_id")
@@ -25,12 +25,9 @@ public class Locations {
     private String stateProvince;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Departments> departments;
+    @JsonIgnore
+    private List<Department> departments;
     
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Countries country;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -47,6 +44,6 @@ public class Locations {
     public String getStateProvince() { return stateProvince; }
     public void setStateProvince(String stateProvince) { this.stateProvince = stateProvince; }
 
-    public List<Departments> getDepartments() { return departments; }
-    public void setDepartments(List<Departments> departments) { this.departments = departments; }
+    public List<Department> getDepartments() { return departments; }
+    public void setDepartments(List<Department> departments) { this.departments = departments; }
 }
