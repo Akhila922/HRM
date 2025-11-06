@@ -27,8 +27,13 @@ public class Country {
     private String name;
 
     // Used by System B: region reference
-    @Column(name = "region_id")
+    @Column(name = "region_id", insertable = false, updatable = false)
     private Long regionId;
+
+    // Bidirectional relationship to Region
+    @ManyToOne
+    @JoinColumn(name = "region_id", referencedColumnName = "region_id")
+    private Region region;
 
     // Shared: locations mapped by 'country' field in Location entity
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
@@ -76,6 +81,14 @@ public class Country {
 
     public void setRegionId(Long regionId) {
         this.regionId = regionId;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
 
     public List<Location> getLocations() {
