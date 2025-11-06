@@ -39,4 +39,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         dto.setDepartmentId(emp.getDepartment() != null ? emp.getDepartment().getDepartmentId() : null);
         return dto;
     }
+
+    @Override
+    public List<EmployeeDTO> getEmployeesByLocation(Long locationId) {
+        return employeeRepository.findByDepartment_Location_LocationId(locationId).stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
 }
