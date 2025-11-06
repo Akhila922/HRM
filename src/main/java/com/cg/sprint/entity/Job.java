@@ -31,7 +31,7 @@ public class Job {
     @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
     List<Employee> employees;
 
-    // Getters and Setters
+    // Getters and Setters methods
     public String getJobId() { return jobId; }
     public void setJobId(String jobId) { this.jobId = jobId; }
 
@@ -47,3 +47,4 @@ public class Job {
     public List<Employee> getEmployees() { return employees; }
     public void setEmployees(List<Employee> employees) { this.employees = employees; }
 }
+
