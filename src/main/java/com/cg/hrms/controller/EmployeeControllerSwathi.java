@@ -22,4 +22,5 @@ public class EmployeeControllerSwathi {
     public LocationDtoSwathi getEmployeesByCity(@PathVariable String cityName) {
         return locationService.getCityDetails(cityName);
     }
+
 }
