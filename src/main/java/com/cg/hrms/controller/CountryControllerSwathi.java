@@ -5,7 +5,6 @@ import com.cg.hrms.service.CountryServiceSwathi;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -24,4 +23,5 @@ public class CountryControllerSwathi {
     public List<CountryDtoSwathi> getCountriesWithCities() {
         return countryService.getAllCountriesWithCities();
     }
+
 }
