@@ -11,4 +11,5 @@ public class DepartmentDtoSwathi {
 
     public List<EmployeeDtoSwathi> getEmployees() { return employees; }
     public void setEmployees(List<EmployeeDtoSwathi> employees) { this.employees = employees; }
+
 }
