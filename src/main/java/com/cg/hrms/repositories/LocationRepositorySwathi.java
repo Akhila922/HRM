@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LocationRepositorySwathi extends JpaRepository<Location, Long> {
+    
     Location findByCityIgnoreCase(String city);
+
 }
