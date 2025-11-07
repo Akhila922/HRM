@@ -11,4 +11,5 @@ public class LocationDtoSwathi {
 
     public List<DepartmentDtoSwathi> getDepartments() { return departments; }
     public void setDepartments(List<DepartmentDtoSwathi> departments) { this.departments = departments; }
+
 }
