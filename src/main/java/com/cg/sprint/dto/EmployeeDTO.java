@@ -16,6 +16,7 @@ public class EmployeeDTO {
 	private Long managerId;
 	private Long departmentId;
 
+	
 	public Long getEmployeeId() {
 		return employeeId;
 	}
@@ -104,3 +105,4 @@ public class EmployeeDTO {
 		this.departmentId = departmentId;
 	}
 }
+
