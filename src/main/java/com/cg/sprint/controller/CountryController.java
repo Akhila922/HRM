@@ -28,4 +28,6 @@ public class CountryController {
     public List<LocationDTO> getLocationsByCountry(@PathVariable String id) {
         return countryService.getLocationsByCountry(id);
     }
+    
 }
+
