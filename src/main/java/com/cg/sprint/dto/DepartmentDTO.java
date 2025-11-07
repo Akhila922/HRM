@@ -6,7 +6,6 @@ public class DepartmentDTO {
     private String departmentName;
     private Long managerId;
     private Long locationId;
-
     public Long getDepartmentId() {
         return departmentId;
     }
@@ -35,3 +34,4 @@ public class DepartmentDTO {
         this.locationId = locationId;
     }
 }
+
