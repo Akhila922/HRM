@@ -21,14 +21,15 @@ public class JobControllerVishnu {
         this.jobService = jobService;
         this.employeeService = employeeService;
     }
-
+    // get all employees
     @GetMapping
     public List<Job> getAllJobs() {
         return jobService.getAllJobs();
     }
-
+    //get employee by job id
     @GetMapping("/{jobId}/employees")
     public List<Employee> getEmployeesByJob(@PathVariable String jobId) {
         return employeeService.getEmployeesByJobId(jobId);
     }
+
 }
