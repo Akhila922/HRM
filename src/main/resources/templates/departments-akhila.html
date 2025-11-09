@@ -42,8 +42,9 @@
     <div class="pagination" id="pagination"></div>
   </div>
 
-  <script>
-    const apiBase = "http://localhost:9090/akhila/departments";
+  <script th:inline="javascript">
+    const apiBaseUrl = /*[[${apiBaseUrl}]]*/ 'http://localhost:9090';
+    const apiBase = `${apiBaseUrl}/akhila/departments`;
     const tbody = document.querySelector("tbody");
     const searchBox = document.getElementById("search-box");
 
